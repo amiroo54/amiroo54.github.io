@@ -1,0 +1,126 @@
+:root
+{
+    --db: #051923;
+    --mb: #003554;
+    --b: #006494;
+    --lb: #1582ca;
+    --w: #bfdfff
+}
+
+html
+{
+    margin: 0;
+    padding: 0;
+    background: var(--lb);
+    height: 100%;
+}
+
+
+header
+{
+    background: var(--db);
+    width: 100%;
+    height: auto;
+    font-size: 17px;
+    padding: 0 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--db);
+}
+
+body
+{
+    width: auto;
+    min-height: 100%;
+    margin: 0px 0px;
+    padding: 0;
+    border: 1px solid black;
+    background: var(--mb);
+}
+
+h1
+{
+    color: var(--w);
+    font-size: xx-large;
+}
+
+p, h2, li
+{
+    color: var(--w);
+    font-size: x-large;
+}
+
+a
+{
+    color: var(--lb);
+}
+ 
+article
+{
+    padding: auto;
+    margin: 10px 30px;
+}
+
+.nav
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--db);
+}
+
+.nav li
+{
+    float: left;
+}
+
+.nav li a
+{
+    display: block;
+    color: var(--w);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: 1px solid var(--w);
+}
+
+.nav li a:hover
+{
+    background-color: var(--b);
+}
+
+img
+{
+    border-radius: 50%;
+    width: 150px;
+    margin-right: auto;
+    display: block;
+    animation-name: image-border-shrink;
+    animation-duration: .2s;
+}
+
+@keyframes image-border-expand
+{
+    from {border-radius: 50%}
+    to {border-radius: 30% }
+}
+
+@keyframes image-border-shrink
+{
+    from {border-radius: 30%}
+    to {border-radius: 50% }
+}
+
+img:hover
+{
+    border-radius: 30%;
+    animation-name: image-border-expand;
+    animation-duration: .2s;
+    
+}
+
+.current
+{
+    background-color: var(--mb);
+}
