@@ -90,6 +90,11 @@ article
     background-color: var(--b);
 }
 
+.nav li:last-child a
+{
+    border-right: none;
+}
+
 img
 {
     border-radius: 50%;
