@@ -31,22 +31,25 @@ loadHeader(HeaderString);
 function loadHeader(HeaderString)
 {
     const parser = new DOMParser();
-    const hDoc = parser.parseFromString(HeaderString, "text/html");
+    const hDoc = parser.parseFromString(HeaderString, "text/html"); //getting a DOM object from the string.
     
+
     var navs = hDoc.querySelectorAll(".nav a");
-    var currentPage = window.location.pathname.split("/").pop();
-    
+    var currentPage = window.location.href.split("/").pop().replace("#", ""); //getting current page url.
+    console.debug(currentPage);
     for (var i = 0; i < navs.length; i++) 
     {
         if (navs[i].getAttribute("href") === currentPage) 
-        {
+        { 
+            //changing attributes in the selected nav.
             navs[i].classList.add("current");
+            navs[i].setAttribute("href", "#");
         }
     }
     
     const serializer = new XMLSerializer();
     
     HeaderString = serializer.serializeToString(hDoc);
-    headerDiv.innerHTML = HeaderString;
+    headerDiv.innerHTML = HeaderString; //adding the modified header to the selected div.
 }
 
