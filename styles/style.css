@@ -4,7 +4,8 @@
     --mb: #003554;
     --b: #006494;
     --lb: #1582ca;
-    --w: #bfdfff
+    --w: #bfdfff;
+    --transition-time: .08s;
 }
 
 html
@@ -13,6 +14,7 @@ html
     padding: 0;
     background: var(--lb);
     height: 100%;
+    transition: var(--transition-time);
 }
 
 
@@ -28,6 +30,7 @@ header
     border: 1px solid var(--db);
     display: flex;
     align-items: center;
+    transition: var(--transition-time);
 }
 .title
 {
@@ -41,6 +44,7 @@ body
     padding: 0;
     border: 1px solid black;
     background: var(--mb);
+    transition: var(--transition-time);
 }
 
 h1
@@ -115,7 +119,8 @@ input:focus + .slider {
     box-shadow: 0 0 1px var(--mb);
 }
   
-  input:checked + .slider:before {
+input:checked + .slider:before 
+{
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -127,6 +132,7 @@ input:focus + .slider {
     padding: 0;
     overflow: hidden;
     background-color: var(--db);
+    transition: var(--transition-time);
 }
 
 .nav li
@@ -141,7 +147,7 @@ input:focus + .slider {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    border-right: 1px solid var(--w);
+    transition: var(--transition-time);;
 }
 
 .nav li a:hover
@@ -185,6 +191,10 @@ img:hover
 }
 
 .current
+{
+    background-color: var(--mb);
+}
+.current:hover
 {
     background-color: var(--mb);
 }

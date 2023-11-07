@@ -22,7 +22,6 @@ function onThemeChange()
         changeTheme();
     }
 }
-
 function changeTheme()
 {
 
