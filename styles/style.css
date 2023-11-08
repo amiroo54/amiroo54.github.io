@@ -34,7 +34,8 @@ header
 }
 .title
 {
-    width: 95%;
+    width: 100%;
+    margin-left: 10px;
 }
 body
 {
@@ -45,6 +46,19 @@ body
     border: 1px solid black;
     background: var(--mb);
     transition: var(--transition-time);
+}
+
+#main
+{
+    display: flex;
+}
+#news
+{
+    width: 60vw;
+}
+.article
+{
+    padding: 0;
 }
 
 h1
@@ -59,16 +73,33 @@ p, h2, li
     color: var(--w);
     font-size: x-large;
 }
-
 a
 {
-    color: var(--lb);
-}
- 
+    color: var(--w);
+} 
 article
 {
     padding: auto;
     margin: 10px 30px;
+}
+input
+{
+    color: var(--w);
+    background-color: var(--db);
+    border-color: var(--w);
+    border-style: solid;
+    border-radius: 15px;
+    font-size: x-large;
+    font-family: serif;
+}
+button
+{
+    color: var(--w);
+    background-color: var(--db);
+    border-color: var(--w);
+    border-radius: 12px;
+    font-size: x-large;
+    font-family: serif;
 }
 .theme
 {
@@ -87,10 +118,12 @@ article
 
 .slider
 {
+    margin-right: 10px;
     position: absolute;
     cursor: pointer;
+    border-radius: 14px;
     top: 0;
-    left: 0;
+    left: -10px;
     bottom: 0;
     right: 0;
     background-color: var(--lb);
@@ -102,6 +135,7 @@ article
 {
     position: absolute;
     content: "";
+    border-radius: 40%;
     height: 26px;
     width: 26px;
     left: 4px;

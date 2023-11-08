@@ -1,7 +1,7 @@
 var headerDiv = document.querySelector(".header");
 
 const xhr = new XMLHttpRequest();
-xhr.open('GET', 'Header.html', false); 
+xhr.open('GET', '/htmlTemplates/Header.html', false); 
 xhr.send();
 
 if (xhr.status == 200)
@@ -19,14 +19,12 @@ function loadHeader(HeaderString)
   var currentPage = window.location.href.split("/").pop().replace("#", ""); //getting current page url.
   for (var i = 0; i < navs.length; i++) 
   {
-    console.log(currentPage);
-    if (navs[i].getAttribute("href") === currentPage || (navs[i].getAttribute("href") == "index.html" && currentPage==""))
+    if (navs[i].getAttribute("href") === "/" + currentPage || (navs[i].getAttribute("href") == "/index.html" && currentPage==""))
     { 
       navs[i].classList.add("current");
       navs[i].setAttribute("href", "#");
     }
   }
-  
   const serializer = new XMLSerializer();
   
   HeaderString = serializer.serializeToString(hDoc);

@@ -31,7 +31,7 @@ function changeTheme()
     if (currentTheme == "dark")
     {
         //change everything to dark.
-        icon.setAttribute("href", "resources/Icons/Icon-Light-512.png");
+        icon.setAttribute("href", "/resources/Icons/Icon-Light-512.png");
         document.documentElement.style.setProperty('--w', "#051923");
         document.documentElement.style.setProperty('--lb', "#003554");
         document.documentElement.style.setProperty('--b', "#006494");
@@ -40,7 +40,7 @@ function changeTheme()
     } else if(currentTheme == "light")
     {
         //change everything to light.
-        icon.setAttribute("href", "resources/Icons/Icon-Dark-512.png");
+        icon.setAttribute("href", "/resources/Icons/Icon-Dark-512.png");
         document.documentElement.style.setProperty('--db', "#051923");
         document.documentElement.style.setProperty('--mb', "#003554");
         document.documentElement.style.setProperty('--b', "#006494");
