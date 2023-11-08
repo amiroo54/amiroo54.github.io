@@ -1,13 +1,22 @@
 var articles = document.getElementById("news");
-let number = 1;
+let number = 3;
 
 const articlesPath = '/articles/'; 
 
+var articlesJson;
 
-async function getRandomArticle(_callback, text)
+async function generateArticlePreview(text)
 {
     await fetch(articlesPath + `/index.json`).then(res => res.json()).then(res =>{
-        _callback(articlesPath + res['articles']['1'], text);
+        var keys = Object.keys(res)
+        for (let i = 0; i < number; i++)
+        {
+            const randIndex = Math.floor(Math.random() * keys.length)
+            const randKey = keys[randIndex]
+            keys.splice(randIndex, 1);
+            const name = res[randKey]
+            addToDoc(articlesPath + name, text);
+        }
     });
     
 }
@@ -27,10 +36,6 @@ function addToDoc(articlePath, text)
 }
 
 fetch("htmlTemplates/ArticlePreview.html").then(text => text.text()).then(text => {
-    for (let i = 0; i < number; i++)
-    {
-        //choosing articles.
-        let articlePath = getRandomArticle(addToDoc, text);        
-    }
+    generateArticlePreview(text);        
 })
 

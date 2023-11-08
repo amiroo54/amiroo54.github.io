@@ -1,0 +1,29 @@
+img
+{
+    border-radius: 50%;
+    width: 150px;
+    margin-right: auto;
+    display: block;
+    animation-name: image-border-shrink;
+    animation-duration: .2s;
+}
+
+@keyframes image-border-expand
+{
+    from {border-radius: 50%}
+    to {border-radius: 30% }
+}
+
+@keyframes image-border-shrink
+{
+    from {border-radius: 30%}
+    to {border-radius: 50% }
+}
+
+img:hover
+{
+    border-radius: 30%;
+    animation-name: image-border-expand;
+    animation-duration: .2s;
+    
+}
