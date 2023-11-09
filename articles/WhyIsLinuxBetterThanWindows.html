@@ -20,7 +20,33 @@
             <article>
                 <p>why not? you tell me why.</p>
                 <input>
-                <button>submit</button>
+                <button onclick="onClick()">submit</button>
+                <script>
+                    function onClick()
+                    {
+                        let userAgent = window.navigator.userAgent,
+                        platform = window.navigator.platform,
+                        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+                        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+                        iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+                        hasBeenDetected = false;
+                        if (macosPlatforms.indexOf(platform) !== -1) {
+                            hasBeenDetected = true;
+                            alert("Stop using mac os. belive in linux.")
+                        } else if (iosPlatforms.indexOf(platform) !== -1) {
+                            hasBeenDetected = true;
+                            alert("stop using iphone. belive in android.")
+                        } else if (windowsPlatforms.indexOf(platform) !== -1) {
+                            hasBeenDetected = true;
+                            alert("stop using windows. belive in linux.")
+                        } else if (/Android/.test(userAgent)) {
+                            hasBeenDetected = true;
+                            alert("currently there are no server side function to get your message but i thank you for not choosing ios.")
+                        } else if (!hasBeenDetected && /Linux/.test(platform)) {
+                            alert("currently there are no server side function to get your message but i thank you for choosing linux.")
+                        }
+                    }
+                </script>
             </article>
         </section>
     </body>
