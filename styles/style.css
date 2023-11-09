@@ -202,3 +202,37 @@ input:checked + .slider:before
 {
     background-color: var(--mb);
 }
+@media screen and (max-width: 768px) {
+    html {
+        background: var(--lb);
+    }
+    
+    header {
+        width: 100%;
+        height: auto;
+        font-size: 15px;
+        padding: 0 0 auto;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        display: flex;
+        align-items: center;
+    }
+    
+    body {
+        width: auto;
+        min-height: 100%;
+        padding: 0;
+        background: var(--mb);
+    }
+    
+    #main {
+        display: block;
+    }
+    #news {
+        width: 95vw;
+    }
+    .article {
+        padding: 10px;
+    }
+}
