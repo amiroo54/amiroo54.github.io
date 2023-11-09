@@ -9,6 +9,15 @@ async function generateArticlePreview(text)
 {
     await fetch(articlesPath + `/index.json`).then(res => res.json()).then(res =>{
         var keys = Object.keys(res)
+        var count = articles.getAttribute("data-Count");
+        if (count == "all")
+        {
+            number = keys.length;
+        }
+        else
+        {
+            number = count;
+        }
         for (let i = 0; i < number; i++)
         {
             const randIndex = Math.floor(Math.random() * keys.length)

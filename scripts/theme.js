@@ -35,8 +35,8 @@ function changeTheme()
         document.documentElement.style.setProperty('--w', "#051923");
         document.documentElement.style.setProperty('--lb', "#003554");
         document.documentElement.style.setProperty('--b', "#006494");
-        document.documentElement.style.setProperty('--mb', "#1582ca");
-        document.documentElement.style.setProperty('--db', "#bfdfff");
+        document.documentElement.style.setProperty('--mb', "#bfdfff");
+        document.documentElement.style.setProperty('--db', "#1582ca");
     } else if(currentTheme == "light")
     {
         //change everything to light.
