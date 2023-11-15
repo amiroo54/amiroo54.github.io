@@ -25,9 +25,10 @@ function loadHeader(HeaderString)
       navs[i].setAttribute("href", "#");
     }
   }
+
+  //adding language to the header before adding it.
   const serializer = new XMLSerializer();
   
   HeaderString = serializer.serializeToString(hDoc);
   headerDiv.innerHTML = HeaderString; //adding the modified header to the selected div.
 }
-

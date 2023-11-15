@@ -17,7 +17,20 @@ html
     transition: var(--transition-time);
 }
 
+.farsi .en
+{
+    display: none;
+}
+.english .fa
+{
+    display: none;
+}
 
+.fa
+{
+    text-align: right;
+    float: right;
+}
 header
 {
     background: var(--db);
@@ -48,11 +61,11 @@ body
     transition: var(--transition-time);
 }
 
-#main
+.main
 {
     display: flex;
 }
-#news
+.news
 {
     width: 60vw;
 }
@@ -123,7 +136,7 @@ button
     cursor: pointer;
     border-radius: 14px;
     top: 0;
-    left: -10px;
+    left: -20px;
     bottom: 0;
     right: 0;
     background-color: var(--lb);
@@ -159,6 +172,14 @@ input:checked + .slider:before
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
+
+#language
+{   
+    width: 8vw;
+    height: 6vh;
+    font-size: large;
+}
+
 .nav
 {
     list-style-type: none;

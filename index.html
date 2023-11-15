@@ -10,14 +10,14 @@
         <link href="styles/home.css" rel="stylesheet">
         <link href="resources/Icons/Icon-Light-512.png" rel="icon">
     </head>
-    <body>
+    <body id="lang">
 
 
         <div class="header"></div>
         <script src="scripts/header.js"></script>
         <script src="scripts/theme.js"></script>
 
-        <section id="main">
+        <section class="main en">
             <article>
                 <p>This site belongs to amiroof, a full-stack devepoler who also happens to study human scienses.
                 <br>languages i know and work with:</p>
@@ -35,12 +35,36 @@
                 <p>If you ever saw this <img src="resources/Profile.jpg" alt="Profile Pic"> know that you have met me.</p>
                 
             </article>
-            <div id="news" data-Count="3">
+            <div class="news" data-Count="3">
 
             </div>
-            <script src="scripts/indexFormatter.js"></script>
         </section>
+        
+        <section class="main fa">
+            <article dir="rtl">
+                <p>این سایت متعلق به امیروف، یک برنامه نویس که در رشته انسانی هم درس می خواند می باشد.
+                <br>زبان های برنامه نویسی ای که کار می کنم:</p>
+                <ul>
+                    <li>پایتون</li>
+                    <li>سی شارپ</li>
+                    <li>جاوا</li>
+                    <li>جاوا اسکریپت</li>
+                    <li>HTML</li>
+                    <li>SQL</li>
+                </ul>
+                <p>به غیر از برنامه نویسی من کلا با کامپیوتر زیاد کار می کنم و خوب می فهمم مشکلشون چیه.</p>
+                <p>در ضمن به جز زبانای برنامه نویسی به زبانای طبیعی هم علاقه دارم. فارسی و انگلیسی رو تقریبا کامل بلدم دارم عربی و آلمانی هم یاد می گیرم.</p>
+
+                <p>اگه جایی تو فضای مجازی این پروفایل رو دیدی <img src="resources/Profile.jpg" alt="Profile Pic"> بدون که اون شخص من بودم.</p>
+                
+            </article>
+            <div class="news" data-Count="3">
+
+            </div>
+        </section>
+        <script src="scripts/indexFormatter.js"></script>
     </body>
 
+        
 </html>
 
