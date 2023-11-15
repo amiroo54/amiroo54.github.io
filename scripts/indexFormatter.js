@@ -1,4 +1,4 @@
-var enArticles = document.getElementsByClassName("news")[0];
+let Articles = document.getElementsByClassName("news")[0];
 let number = 3;
 
 const articlesPath = '/articles/'; 
@@ -7,14 +7,10 @@ var articlesJson;
 
 async function generateArticlePreview(text)
 {
-    let articleListPath = '/en-articles.json';
-    if (localStorage.getItem("language") == "persian")
-    {
-        articleListPath = '/fa-articles.json';
-    }
+    let articleListPath = '/articles.json';
     await fetch(articlesPath + articleListPath).then(res => res.json()).then(res =>{
-        var keys = Object.keys(res)
-        var count = enArticles.getAttribute("data-Count");
+        var keys = Object.keys(res);
+        var count = Articles.getAttribute("data-Count");
         if (count == "all")
         {
             number = keys.length;
@@ -46,7 +42,7 @@ function addToDoc(articlePath, template)
         doc.querySelector(".title").setAttribute("href", articlePath);
         const serilizer = new XMLSerializer();
         
-        enArticles.innerHTML += serilizer.serializeToString(doc);    
+        Articles.innerHTML += serilizer.serializeToString(doc);    
     })
 }
 
