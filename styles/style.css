@@ -16,21 +16,6 @@ html
     height: 100%;
     transition: var(--transition-time);
 }
-
-.farsi .en
-{
-    display: none;
-}
-.english .fa
-{
-    display: none;
-}
-
-.fa
-{
-    text-align: right;
-    float: right;
-}
 header
 {
     background: var(--db);
@@ -247,10 +232,10 @@ input:checked + .slider:before
         background: var(--mb);
     }
     
-    #main {
+    .main {
         display: block;
     }
-    #news {
+    .news {
         width: 95vw;
     }
     .article {

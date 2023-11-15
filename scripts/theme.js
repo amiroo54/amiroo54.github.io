@@ -1,10 +1,10 @@
 changeTheme();
-changeLanguage();
+//changeLanguage();
 let t = document.getElementById("themeChange");
 t.onchange = onThemeChange;
 
-let l = document.getElementById("language");
-l.onclick = setLanguage;
+//let l = document.getElementById("language");
+//l.onclick = setLanguage;
 
 if (localStorage.getItem('theme') == "dark")
 {
@@ -51,23 +51,4 @@ function changeTheme()
         document.documentElement.style.setProperty('--lb', "#1582ca");
         document.documentElement.style.setProperty('--w', "#bfdfff");
     }
-}
-function setLanguage()
-{
-  var currentLang = localStorage.getItem("language");
-  if (currentLang == "farsi")
-  {
-    localStorage.setItem("language", "english");
-  }
-  else
-  {
-    localStorage.setItem("language", "farsi");
-  }
-  changeLanguage();
-}
-
-function changeLanguage()
-{
-  var currentLang = localStorage.getItem("language");
-  document.getElementById("lang").setAttribute("class", currentLang);
 }
