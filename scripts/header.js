@@ -44,6 +44,7 @@ function resizeCanvas()
 {
   canvas.width = window.innerWidth;
   document.getElementById('canvas').height = document.getElementById("header").clientHeight;
+  lineDistance = window.innerWidth / 15;
 }
 
 
@@ -53,6 +54,8 @@ function resizeCanvas()
 const deceleration = .01;
 const minimumSpeed = .4;
 const color = "#003554";
+var lineDistance = window.innerWidth / 50;
+
 resizeCanvas();
 
 class vector2
@@ -217,7 +220,7 @@ function addLineBetweenDots()
       
       let cdistance = dot1.pos.distance(dot2.pos);
 
-      if (cdistance < 100)
+      if (cdistance < lineDistance)
       {
         dot2.connections.push(dot1);
       }
