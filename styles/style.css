@@ -40,6 +40,7 @@ header
     width: 100%;
     margin-left: 10px;
     z-index: 3;
+    pointer-events: none;
 }
 
 body
@@ -184,43 +185,38 @@ input:checked + .slider:before
     height: 6vh;
     font-size: large;
 }
-nav
-{
-    z-index: 3;
-}
 .nav
 {
+    position: relative;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: var(--db);
     transition: var(--transition-time);
-    z-index: 4;
 }
-
 .nav li
 {
+    position: inherit;
     float: left;
-    z-index: 4;
+    z-index: 3;
     padding: 0;
 }
 
 .nav li a
 {
+    position: inherit;
     display: block;
     color: var(--w);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     transition: var(--transition-time);;
-    z-index: 4;
 }
 
 .nav li a:hover
 {
     background-color: var(--b);
-    z-index: 5;
 }
 
 .current

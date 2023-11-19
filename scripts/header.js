@@ -32,17 +32,21 @@ function loadHeader(HeaderString)
   headerDiv.innerHTML = HeaderString; 
 }
 
+var dots = [];
+
 
 const canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
-canvas.height = document.getElementById("header").clientHeight;
+resizeCanvas();
 
-window.addEventListener('resize', () => 
+window.addEventListener('resize', resizeCanvas);
+
+
+function resizeCanvas()
 {
-  console.log("changes size");
-  console.log(canvas);
   document.getElementById('canvas').height = document.getElementById("header").clientHeight;
-});
+}
+
 
 const context = canvas.getContext("2d");
 
@@ -51,17 +55,65 @@ const deceleration = .01;
 const minimumSpeed = .4;
 const color = "#003554";
 
-let dots = [];
+class vector2
+{
+  constructor(x, y)
+  {
+    this.x = x;
+    this.y = y;
+  }
+
+  distance(a)
+  {
+    let d = vector2.subtract(a, this);
+    return Math.sqrt(d.x * d.x + d.y * d.y);
+  }
+  normilized()
+  {
+    let distance = this.distance(vector2.zero);
+    return new vector2(this.x / distance, this.y / distance);
+  }
+  setValue(v)
+  {
+    this.x = v.x;
+    this.y = v.y;
+  }
+
+  static add(a, b)
+  {
+    return new vector2(a.x + b.x, a.y + b.y);
+  }
+  static subtract(a, b)
+  {
+    return new vector2(a.x - b.x, a.y - b.y);
+  }
+  static multiply(a, b)
+  {
+    if (typeof(b) == 'vector2')
+    {
+      return new vector2(a.x * b.x, a.y * b.y);
+    }
+    else if(typeof(b) == 'number')
+    {
+      return new vector2(a.x * b, a.y * b);
+    }
+  }
+  static isEqual(a, b)
+  {
+    return a.x == b.x && a.y == b.y? true : false;
+  }
+
+
+  static zero = new vector2(0, 0);
+}
 
 class Dot 
 {
  constructor(x, y) 
  {
-  this.x = x;
-  this.y = y;
-  this.size = Math.random() * 10 + 5;
-  this.speedX = (Math.random() - 0.5) * 2;
-  this.speedY = (Math.random() - 0.5) * 2;
+  this.pos = new vector2(x, y);
+  this.size = Math.random() * 5 + 5;
+  this.speed = new vector2((Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2);
   this.connections = [];
  }
 
@@ -70,15 +122,15 @@ class Dot
   context.fillStyle = color;
   context.strokeStyle = color;
   context.beginPath();
-  context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+  context.arc(this.pos.x, this.pos.y, this.size, 0, Math.PI * 2);
   context.closePath();
   context.fill();
   for (let dot of this.connections)
   {
     context.beginPath();
     context.lineWidth = 2;
-    context.moveTo(this.x, this.y);
-    context.lineTo(dot.x, dot.y);
+    context.moveTo(this.pos.x, this.pos.y);
+    context.lineTo(dot.pos.x, dot.pos.y);
     context.closePath();
     context.stroke();
   }
@@ -86,84 +138,95 @@ class Dot
 
  update() 
  {
-  this.x += this.speedX;
-  this.y += this.speedY;
+  this.pos.x += this.speed.x;
+  this.pos.y += this.speed.y;
+  this.speed.x = (minimumSpeed > this.speed.x && this.speed.x > -minimumSpeed)? this.speed.x : this.speed.x - (deceleration * Math.sign(this.speed.x));
+  this.speed.y = (minimumSpeed > this.speed.y && this.speed.y > -minimumSpeed)? this.speed.y : this.speed.y - (deceleration * Math.sign(this.speed.y));
 
-  this.speedX = (minimumSpeed > this.speedX && this.speedX > -minimumSpeed)? this.speedX : this.speedX - (deceleration * Math.sign(this.speedX));
-  this.speedY = (minimumSpeed > this.speedY && this.speedY > -minimumSpeed)? this.speedY : this.speedY - (deceleration * Math.sign(this.speedY));
-
-  if (this.x < 0 && this.speedX < 0) 
+  if (this.pos.x < 0 && this.speed.x < 0) 
   {
-    this.speedX = -this.speedX;
+    this.speed.x = -this.speed.x;
   }
-  if (this.x > canvas.width && this.speedX > 0) 
+  if (this.pos.x > canvas.width && this.speed.x > 0) 
   {
-    this.speedX = -this.speedX;
+    this.speed.x = -this.speed.x;
   }
   
-
-  if (this.y < 0 && this.speedY < 0) 
+  if (this.pos.y < 0 && this.speed.y < 0) 
   {
-    this.speedY = -this.speedY;
+    this.speed.y = -this.speed.y;
   }
-  if (this.y > canvas.height && this.speedY > 0) 
+  if (this.pos.y > canvas.height && this.speed.y > 0) 
   {
-    this.speedY = -this.speedY;
+    this.speed.y = -this.speed.y;
   }
  }
 }
 
-for (let i = 0; i < 30; i++) 
+for (let i = 0; i < 30; i++) //creating the dots.
 {
- let x = Math.random() * canvas.width;
- let y = Math.random() * canvas.height;
- let dot = new Dot(x, y);
- dots.push(dot);
+ let v = new vector2(Math.random() * canvas.width, Math.random() * canvas.height);
+ dots.push(new Dot(v.x, v.y));
 }
 
 function animate() 
 {
- requestAnimationFrame(animate);
- context.clearRect(0, 0, canvas.width, canvas.height);
+  requestAnimationFrame(animate);
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
- for (let dot of dots) 
- {
-  dot.draw();
-  dot.update();
- }
+  for (let dot of dots)
+  {
+    dot.draw();
+    dot.update();
+  }
 }
 
 animate();
 
-canvas.addEventListener("mousemove", (event) => 
+
+canvas.addEventListener("mousemove", onMouseMove); 
+function onMouseMove(event) 
 {
- for (let dot of dots) 
+  for (let dot of dots) 
  {
   dot.connections = [];
-  let dx = event.clientX - dot.x;
-  let dy = event.clientY - dot.y;
-  let distance = Math.sqrt(dx*dx + dy*dy);
+  let mousePos = new vector2(event.clientX, event.clientY);
+  let d = vector2.subtract(mousePos, dot.pos);
+  
+  let distance = d.distance(vector2.zero);
 
   if (distance < 300) 
   {
-   dot.speedX = -(dx / distance) * 2;
-   dot.speedY = -(dy / distance) * 2; // use a vector2 (or something similar) and normilize it.
+    dot.speed = vector2.multiply(vector2.subtract(vector2.zero, d.normilized()), 2);
   }
 
-  for (let d of dots)
-  {
-    if (d == this)
-    {
-      continue;
-    }
-    let cx = d.x - dot.x;
-    let cy = d.y - dot.y;
-    let cdistance = Math.sqrt(cx*cx + cy*cy);
-
-    if (cdistance < 300)
-    {
-      dot.connections.push(d);
-    }
-  }
+  addLineBetweenDots();
  }
-});
+};
+
+function addLineBetweenDots()
+{
+  for(let dot1 of dots)
+  {
+    for (let dot2 of dots)
+    {
+      if (dot1 == this)
+      {
+        return;
+      }
+      
+      let cdistance = dot1.pos.distance(dot2.pos);
+
+      if (cdistance < 100)
+      {
+        dot2.connections.push(dot1);
+      }
+      if (cdistance < dot2.size + dot1.size)
+      {
+        vector2.multiply(dot2.speed, -1);
+        vector2.multiply(dot1.speed, -1);
+      }
+    }
+  }    
+}
+addLineBetweenDots();
