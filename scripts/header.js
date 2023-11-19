@@ -36,24 +36,24 @@ var dots = [];
 
 
 const canvas = document.getElementById("canvas");
-canvas.width = window.innerWidth;
-resizeCanvas();
-
+const context = canvas.getContext("2d");
 window.addEventListener('resize', resizeCanvas);
 
 
 function resizeCanvas()
 {
+  canvas.width = window.innerWidth;
   document.getElementById('canvas').height = document.getElementById("header").clientHeight;
 }
 
 
-const context = canvas.getContext("2d");
+
 
 
 const deceleration = .01;
 const minimumSpeed = .4;
 const color = "#003554";
+resizeCanvas();
 
 class vector2
 {
