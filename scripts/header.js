@@ -176,7 +176,7 @@ function animate()
 {
   requestAnimationFrame(animate);
   context.clearRect(0, 0, canvas.width, canvas.height);
-
+  addLineBetweenDots();
   for (let dot of dots)
   {
     dot.draw();
@@ -192,7 +192,7 @@ function onMouseMove(event)
 {
   for (let dot of dots) 
  {
-  dot.connections = [];
+  
   let mousePos = new vector2(event.clientX, event.clientY);
   let d = vector2.subtract(mousePos, dot.pos);
   
@@ -213,6 +213,7 @@ function addLineBetweenDots()
   {
     for (let dot2 of dots)
     {
+      dot1.connections = [];
       if (dot1 == this)
       {
         return;
