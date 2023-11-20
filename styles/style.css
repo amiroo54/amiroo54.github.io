@@ -35,12 +35,15 @@ header
 {
     z-index: 1;
 }
+#mainTilte
+{
+    pointer-events: none;
+}
 .title
 {
     width: 100%;
     margin-left: 10px;
     z-index: 3;
-    pointer-events: none;
 }
 
 body

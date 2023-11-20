@@ -186,7 +186,6 @@ function animate()
 
 animate();
 
-
 canvas.addEventListener("mousemove", onMouseMove); 
 function onMouseMove(event) 
 {
