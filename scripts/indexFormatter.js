@@ -37,9 +37,9 @@ function addToDoc(articlePath, template)
         const parser = new DOMParser();
         var doc = parser.parseFromString(template, "text/html");
         var artDOM = parser.parseFromString(art, "text/html");
-        doc.querySelector(".title").innerHTML = artDOM.getElementsByTagName("title")[0].textContent;
+        doc.querySelector(".anchor").innerHTML = artDOM.getElementsByTagName("title")[0].textContent;
         doc.querySelector(".preview").innerHTML = artDOM.getElementsByName("description")[0].getAttribute("content");
-        doc.querySelector(".title").setAttribute("href", articlePath);
+        doc.querySelector(".anchor").setAttribute("href", articlePath);
         const serilizer = new XMLSerializer();
         
         Articles.innerHTML += serilizer.serializeToString(doc);    
