@@ -8,7 +8,6 @@ if (xhr.status == 200)
 {
   loadHeader(xhr.responseText);
 }
-
 function loadHeader(HeaderString)
 {
   const parser = new DOMParser();

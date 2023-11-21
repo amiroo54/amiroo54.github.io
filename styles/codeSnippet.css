@@ -1,0 +1,71 @@
+:root
+{
+    --bg: #343822;
+    --expression: #F92672;
+    --name: #3A8F2F;
+    --keyword: #5CD9D8;
+    --string: #E6C450;
+    --other: #857BFF;
+    --borderRadius: 15px;
+}
+
+.codeName
+{
+    background-color: black;
+    padding-left: 5px;
+    border-top-right-radius: var(--borderRadius);
+    border-top-left-radius: var(--borderRadius);
+    margin: 0;
+    pointer-events: none;
+}
+.code
+{
+    display: block;
+    background-color: var(--bg);
+    width: fit-content;
+    height: auto;
+    border-radius: var(--borderRadius);
+    font-size: x-large;
+    margin: 10px;
+    float: left;
+}
+.codeText
+{
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.name
+{
+    color: var(--name);
+}
+
+.expression
+{
+    color: var(--expression);
+}
+
+.keyword
+{
+    color: var(--keyword);
+} 
+
+.value
+{
+    color: var(--other);
+}
+
+.other 
+{
+    color: fuchsia;
+}
+
+.semicolon
+{
+    color: white;
+}
+
+.string
+{
+    color: var(--string);
+}
