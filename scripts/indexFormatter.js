@@ -50,3 +50,6 @@ fetch("htmlTemplates/ArticlePreview.html").then(res => res.text()).then(res => {
     generateArticlePreview(res);        
 })
 
+let age = new Date() - new Date('2006/07/08 12:00:00');
+document.getElementById("birth-mili").textContent = age;
+document.getElementById("birth-year").textContent = Math.floor(age / (1000 * 60 * 60 * 24 * 365));
