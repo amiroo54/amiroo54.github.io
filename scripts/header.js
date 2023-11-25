@@ -47,9 +47,6 @@ function resizeCanvas()
 }
 
 
-
-
-
 const deceleration = .01;
 const minimumSpeed = .4;
 const color = "#003554";
